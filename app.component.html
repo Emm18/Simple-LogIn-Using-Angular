@@ -1,0 +1,34 @@
+<!-- novalidate to disable browser validation and instead use the bootstrap validation -->
+<form class="needs-validation" #logInForm="ngForm" novalidate
+  (ngSubmit)="checkUserInput(txtUserName.value,txtPassword.value)">
+  <div class="container">
+    <p *ngIf="correctMessage">
+      <ngb-alert type="success" [dismissible]="false">LogIn Successful! Welcome {{txtUserName.value}}!</ngb-alert>
+    </p>
+    <p *ngIf="incorrectMessage">
+      <ngb-alert type="danger" [dismissible]="false">Incorrect Username or Password</ngb-alert>
+    </p>
+    <div class="form-row">
+      <label for="validationCustomUsername">Username</label>
+      <div class="input-group">
+        <input type="text" class="form-control" [class.is-invalid]="txtUNameIsInvalid" id="validationCustomUsername"
+          #txtUserName required>
+        <div class="invalid-feedback">
+          Please enter a username.
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="validationCustomPassword">Password</label>
+      <div class="input-group">
+        <input type="password" class="form-control" [class.is-invalid]="txtPWordIsInvalid" id="validationCustomPassword"
+          #txtPassword required>
+        <div class="invalid-feedback">
+          Please enter a password.
+        </div>
+      </div>
+    </div>
+    <br/>
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </div>
+</form>
